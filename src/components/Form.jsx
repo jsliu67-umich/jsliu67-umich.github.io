@@ -10,7 +10,7 @@ export function MainForm(props) {
     const { value:diningHall, bind:bindDiningHall, reset:resetDiningHall } = useInput('');
     const { value:date, bind:bindDate, reset:resetDate } = useInput('');    
     const { value:meal, bind:bindMeal, reset:resetMeal } = useInput('');    
-    const [dh, setDh] = useState('')
+    
 
     // const { value:lastName, bind:bindLastName, reset:resetLastName } = useInput('');    
     const [cals, setCals] = useState(0.0)
@@ -266,33 +266,46 @@ export function MainForm(props) {
     //     fetchMenus("Bursley", "2022-01-11", "lunch")
     // }, [menus]);
 
+
+// <label>
+//     Dining Hall:
+//     {/* {...bindDiningHall} */}
+//     <select {...bindDiningHall}>
+//         <option defaultValue="Bursley">Bursley</option>
+//         <option value="South Quad">South Quad</option>
+//         <option value="East Quad">East Quad</option>
+//         <option value="Mosher Jordan">Mosher Jordan</option>
+//     </select>
+//     {/* <input type="text" {...bindDiningHall} /> */}
+// </label>
+// <label>
+//     Date:
+//     <input type="date" {...bindDate} />
+// </label>
+// <label>
+//     Meal:
+//     <select {...bindMeal}>
+//         <option value="Breakfast">Breakfast</option>
+//         <option value="Brunch">Brunch</option>
+//         <option value="Lunch">Lunch</option>
+//         <option value="Linner">Linner</option>
+//         <option value="Dinner">Dinner</option>
+//     </select>
+// </label>
     return (
         <div>
             <form onSubmit={handleSubmit} className="main-form">
                 <label>
                     Dining Hall:
-                    {/* {...bindDiningHall} */}
-                    <select {...bindDiningHall}>
-                        <option defaultValue="Bursley">Bursley</option>
-                        <option value="South Quad">South Quad</option>
-                        <option value="East Quad">East Quad</option>
-                        <option value="Mosher Jordan">Mosher Jordan</option>
-                    </select>
-                    {/* <input type="text" {...bindDiningHall} /> */}
+                    <input type="text" {...bindDiningHall} />
                 </label>
                 <label>
                     Date:
-                    <input type="date" {...bindDate} />
+                    <input type="text" {...bindDate} />
                 </label>
                 <label>
                     Meal:
-                    <select {...bindMeal}>
-                        <option value="Breakfast">Breakfast</option>
-                        <option value="Brunch">Brunch</option>
-                        <option value="Lunch">Lunch</option>
-                        <option value="Linner">Linner</option>
-                        <option value="Dinner">Dinner</option>
-                    </select>
+                    <input type="text" {...bindMeal} />
                 </label>
             </form>
             <button className="buttons" onClick={() => fetchMenus(diningHall, date, meal)}>Get Menus</button>

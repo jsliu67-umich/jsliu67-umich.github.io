@@ -10,7 +10,7 @@ export const useInput = initialValue => {
     bind: {
       value,
       onChange: event => {
-        setValue({value: event.target.value});
+        setValue(event.target.value);
       }
     }
   };
