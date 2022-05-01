@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 const Home = () => {
     return (
         <div>
-        <Typography variant="h2">UMich Dining Facts Calculator</Typography>
+        <Typography variant="h2" className="main-header">MDining Nutrition Calculator</Typography>
         <MainForm /> {MainForm.value}
         </div>
     );

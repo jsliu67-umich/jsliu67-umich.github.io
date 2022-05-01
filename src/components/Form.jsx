@@ -122,37 +122,41 @@ export function MainForm(props) {
                 tempCategoryObject[categoryItem.name].push(menuItem.name)
                 let foodFactsObject = {}
                 foodFactsObject[menuItem.name] = {}
-                
-                menuItem.itemSizes[0].nutritionalInfo.map((nutritionalItem, index) => {
-                    foodFactsObject[menuItem.name]["Beef"] = "three"
-                    // console.log(nutritionalItem.value)
-                    // let includeItem = false
-                    if (nutritionalItem.name === "Calories"){
+                if('nutritionalInfo' in menuItem.itemSizes[0]){
+                    menuItem.itemSizes[0].nutritionalInfo.map((nutritionalItem, index) => {
+                        foodFactsObject[menuItem.name]["Beef"] = "three"
                         // console.log(nutritionalItem.value)
-                        // includeItem = true
-                        foodFactsObject[menuItem.name][nutritionalItem.name] = nutritionalItem.value    
-                    }
-                    else if (nutritionalItem.name === "Protein"){
-                        // includeItem = true
-                        foodFactsObject[menuItem.name][nutritionalItem.name] = nutritionalItem.value    
-                    }
-                    else if (nutritionalItem.name === "Total Carbohydrate"){
-                        // includeItem = true
-                        foodFactsObject[menuItem.name][nutritionalItem.name] = nutritionalItem.value    
-                    }
-                    else if (nutritionalItem.name === "Total Fat"){
-                        // includeItem = true
-                        foodFactsObject[menuItem.name][nutritionalItem.name] = nutritionalItem.value    
-                    }
+                        // let includeItem = false
+                        if (nutritionalItem.name === "Calories"){
+                            // console.log(nutritionalItem.value)
+                            // includeItem = true
+                            foodFactsObject[menuItem.name][nutritionalItem.name] = nutritionalItem.value    
+                        }
+                        else if (nutritionalItem.name === "Protein"){
+                            // includeItem = true
+                            foodFactsObject[menuItem.name][nutritionalItem.name] = nutritionalItem.value    
+                        }
+                        else if (nutritionalItem.name === "Total Carbohydrate"){
+                            // includeItem = true
+                            foodFactsObject[menuItem.name][nutritionalItem.name] = nutritionalItem.value    
+                        }
+                        else if (nutritionalItem.name === "Total Fat"){
+                            // includeItem = true
+                            foodFactsObject[menuItem.name][nutritionalItem.name] = nutritionalItem.value    
+                        }
 
-                    // foodFacts[menuItem.name][nutritionalItem.name] = nutritionalItem.value
-                    // const newFoodFacts = {
-                    //     ...foodFacts,
-                    //     ...(includeItem && {"three": nutritionalItem['value']})
-                    // }
-                    // foodFacts = newFoodFacts
-                })
-                tempFoodFactsSingle = {...tempFoodFactsSingle, ...foodFactsObject}
+                        // foodFacts[menuItem.name][nutritionalItem.name] = nutritionalItem.value
+                        // const newFoodFacts = {
+                        //     ...foodFacts,
+                        //     ...(includeItem && {"three": nutritionalItem['value']})
+                        // }
+                        // foodFacts = newFoodFacts
+                    })
+                    tempFoodFactsSingle = {...tempFoodFactsSingle, ...foodFactsObject}
+                }
+                else{
+                    console.log(`${menuItem.name} is missing nutrition facts`)
+                }
                 // setFoodFacts({...foodFacts, ...foodFactsObject})
             })
             tempFoodFacts = {...tempFoodFacts, ...tempFoodFactsSingle}
@@ -219,7 +223,7 @@ export function MainForm(props) {
                 }
                 if(foodFacts[key]["Protein"] !== undefined) {
                     // setProtein(protein + Math.round((foodFacts[key]["Protein"] * val)*100)/100)
-                    protein += Math.round((foodFacts[key]["Calories"] * val)*100)/100
+                    protein += Math.round((foodFacts[key]["Protein"] * val)*100)/100
                 }
                 else{
                     printMissing(key, 'Protein')
@@ -270,12 +274,12 @@ export function MainForm(props) {
 // <label>
 //     Dining Hall:
 //     {/* {...bindDiningHall} */}
-//     <select {...bindDiningHall}>
-//         <option defaultValue="Bursley">Bursley</option>
-//         <option value="South Quad">South Quad</option>
-//         <option value="East Quad">East Quad</option>
-//         <option value="Mosher Jordan">Mosher Jordan</option>
-//     </select>
+    // <select {...bindDiningHall}>
+    //     <option defaultValue="Bursley">Bursley</option>
+    //     <option value="South Quad">South Quad</option>
+    //     <option value="East Quad">East Quad</option>
+    //     <option value="Mosher Jordan">Mosher Jordan</option>
+    // </select>
 //     {/* <input type="text" {...bindDiningHall} /> */}
 // </label>
 // <label>
@@ -297,15 +301,26 @@ export function MainForm(props) {
             <form onSubmit={handleSubmit} className="main-form">
                 <label>
                     Dining Hall:
-                    <input type="text" {...bindDiningHall} />
+                    <select {...bindDiningHall}>
+                        <option defaultValue="Bursley">Bursley</option>
+                        <option value="South Quad">South Quad</option>
+                        <option value="East Quad">East Quad</option>
+                        <option value="Mosher Jordan">Mosher Jordan</option>
+                    </select>
                 </label>
                 <label>
                     Date:
-                    <input type="text" {...bindDate} />
+                    <input type="date" {...bindDate} />
                 </label>
                 <label>
                     Meal:
-                    <input type="text" {...bindMeal} />
+                    <select {...bindMeal} className="custom-select">
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Brunch">Brunch</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Linner">Linner</option>
+                        <option value="Dinner">Dinner</option>
+                    </select>                
                 </label>
             </form>
             <button className="buttons" onClick={() => fetchMenus(diningHall, date, meal)}>Get Menus</button>
