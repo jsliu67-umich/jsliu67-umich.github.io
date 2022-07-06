@@ -7,4 +7,5 @@ export const getMenus = async (diningHall, date, meal) => {
   const response = await axios.get(url);
 
   return response.data.menus;
+  // fetch(url).then(response => response.json()).then(data => setMenus(data.menus))
 };
