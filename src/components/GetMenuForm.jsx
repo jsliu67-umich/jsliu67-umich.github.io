@@ -40,6 +40,16 @@ export function GetMenuForm(props) {
         console.log(menus)
         if(firstMount < 1){
             setFirstMount(firstMount + 1);
+            let date = new Date();
+
+            // var formatedDate = `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`
+            let currMonth = date.getMonth() + 1
+            let currDate = date.getDate()
+            currMonth = currMonth <= 9 ? `0${currMonth}` : `${currMonth}`
+            currDate = currDate <= 9 ? `0${currDate}` : `${currDate}`
+            let formatedDate = `${date.getFullYear()}-${currMonth}-${currDate}`
+            console.log(formatedDate)
+            setDate(formatedDate)
             return;
         }
         else{
