@@ -71,6 +71,7 @@ input[type=select]{
 }
 .amount-form-single{
   margin-bottom: 0.2rem;
+  width: 2rem;
 }
 .nutrition-header{
   margin-top: 1rem;

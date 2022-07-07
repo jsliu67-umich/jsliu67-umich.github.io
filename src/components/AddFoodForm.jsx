@@ -14,7 +14,7 @@ export function AddFoodForm(props) {
         return (
             <label key={val}>
                 {val}:
-                <input className="amount-form-single" type="text" onChange={num => {
+                <input className="amount-form-single" type="number" onChange={num => {
                     // console.log(num.target.value)
                     let tempFoodAmounts = props.foodAmounts
                     tempFoodAmounts[val] = num.target.value
