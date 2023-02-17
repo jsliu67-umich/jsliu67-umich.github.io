@@ -114,11 +114,13 @@ export function GetMenuForm(props) {
                 tempCategoryObject[categoryItem.name].push(menuItem.name)
                 let foodFactsObject = {}
                 foodFactsObject[menuItem.name] = {}
+                // console.log("MFOIESNFOESMOSIENF", menuItem)
                 if('nutritionalInfo' in menuItem.itemSizes[0]){
                     menuItem.itemSizes[0].nutritionalInfo.map((nutritionalItem, index) => {
                         // foodFactsObject[menuItem.name]["Beef"] = "three"
                         // console.log(nutritionalItem.value)
                         // let includeItem = false
+                        foodFactsObject[menuItem.name]["serving_size"] = menuItem.itemSizes[0].servingSize
                         if (nutritionalItem.name === "Calories"){
                             // console.log(nutritionalItem.value)
                             // includeItem = true
