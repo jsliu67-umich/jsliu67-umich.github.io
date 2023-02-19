@@ -30,7 +30,7 @@ export function FoodItem(props) {
                     <li>Serving Size: {"serving_size" in props.foodFacts[props.val] ? props.foodFacts[props.val].serving_size : "Null"}</li>
                     <li>Calories: {"Calories" in props.foodFacts[props.val] ? props.foodFacts[props.val].Calories : "Null"}</li>
                     <li>Protein: {"Protein" in props.foodFacts[props.val] ? props.foodFacts[props.val].Protein : "Null"}</li>
-                    <li>Total Carbohydrate: {"Total Carbohydrates" in props.foodFacts[props.val] ? props.foodFacts[props.val]["Total Carbohydrate"] : "Null"}</li>
+                    <li>Total Carbohydrate: {"Total Carbohydrate" in props.foodFacts[props.val] ? props.foodFacts[props.val]["Total Carbohydrate"] : "Null"}</li>
                     <li>Total Fat: {"Total Fat" in props.foodFacts[props.val] ? props.foodFacts[props.val]["Total Fat"] : "Null"}</li>
                 </ul>
             </div>
