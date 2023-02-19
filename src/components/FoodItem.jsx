@@ -24,15 +24,18 @@ export function FoodItem(props) {
                 }} />
             </label>
             
+            {props.foodFacts[props.val] !== undefined ? 
             <div className={isNotActive ? "hide" : "show"}>
                 <ul style={{"margin-top": 0}}>
-                    <li>Serving Size: {props.foodFacts[props.val].serving_size}</li>
-                    <li>Calories: {props.foodFacts[props.val].Calories}</li>
-                    <li>Protein: {props.foodFacts[props.val].Protein}</li>
-                    <li>Total Carbohydrate: {props.foodFacts[props.val]["Total Carbohydrate"]}</li>
-                    <li>Total Fat: {props.foodFacts[props.val]["Total Fat"]}</li>
+                    <li>Serving Size: {"serving_size" in props.foodFacts[props.val] ? props.foodFacts[props.val].serving_size : "Null"}</li>
+                    <li>Calories: {"Calories" in props.foodFacts[props.val] ? props.foodFacts[props.val].Calories : "Null"}</li>
+                    <li>Protein: {"Protein" in props.foodFacts[props.val] ? props.foodFacts[props.val].Protein : "Null"}</li>
+                    <li>Total Carbohydrate: {"Total Carbohydrates" in props.foodFacts[props.val] ? props.foodFacts[props.val]["Total Carbohydrate"] : "Null"}</li>
+                    <li>Total Fat: {"Total Fat" in props.foodFacts[props.val] ? props.foodFacts[props.val]["Total Fat"] : "Null"}</li>
                 </ul>
             </div>
+            : <div></div>
+            }
         </div>
     )
 
