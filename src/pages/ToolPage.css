@@ -1,0 +1,77 @@
+.tool-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.tool-header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+}
+
+.back-button {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(-4px);
+}
+
+.tool-header h1 {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tool-header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+}
+
+.tool-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coming-soon {
+  font-size: 2rem;
+  color: #718096;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .tool-header h1 {
+    font-size: 2rem;
+  }
+  
+  .tool-header p {
+    font-size: 1rem;
+  }
+  
+  .tool-content {
+    padding: 2rem;
+  }
+  
+  .coming-soon {
+    font-size: 1.5rem;
+  }
+}
+

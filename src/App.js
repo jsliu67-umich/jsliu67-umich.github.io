@@ -1,37 +1,28 @@
-// import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
+import ThemeToggle from './components/ThemeToggle';
 import Home from './pages/Home';
-
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-
-
-function getDaysFacts(props) {
-  let day = props.day; // year-month-day e.g. 2022-01-11
-  let diningHall = props.diningHall;
-  let meal = props.meal.toUpperCase(); // breakfast, brunch, lunch, dinner
-  let url = `https://michigan-dining-api.tendiesti.me/v1/menus?date=${day}&diningHall=${diningHall}%20Dining%20Hall&meal=${meal}`;
-
-}
-
-function LoadFacts(props) {
-  return (
-    <button className="loadButton" onClick={() => this.props.onClick()}>
-      "hi"
-    </button>
-  );
-}
+import DiffChecker from './pages/DiffChecker';
+import JsonFormatter from './pages/JsonFormatter';
+import WhitespaceConverter from './pages/WhitespaceConverter';
+import ShowWhitespace from './pages/ShowWhitespace';
+import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home/>}></Route>
-      </Routes>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <ThemeToggle />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/diffchecker" element={<DiffChecker />} />
+          <Route path="/json-formatter" element={<JsonFormatter />} />
+          <Route path="/whitespace-converter" element={<WhitespaceConverter />} />
+          <Route path="/show-whitespace" element={<ShowWhitespace />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 

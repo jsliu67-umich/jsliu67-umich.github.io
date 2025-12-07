@@ -1,58 +1,58 @@
-
-import React, { useEffect, useState } from 'react';
-import { GetMenuForm } from '../components/GetMenuForm';
-import Typography from '@mui/material/Typography';
-import { AddFoodForm } from '../components/AddFoodForm';
-
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Home.css';
 
 const Home = () => {
-    const [validMenu, setValidMenu] = useState(true)
-    const [foodDisplay, setFoodDisplay] = useState({ })
-    const [foodAmounts, setFoodAmounts] = useState({ })
-    const [foodFacts, setFoodFacts] = useState({ })
-    const FoodHandler = (tempFoodDisplay, tempFoodAmounts, tempFoodFacts) => {
-        setFoodDisplay(tempFoodDisplay)
-        setFoodAmounts(tempFoodAmounts)
-        setFoodFacts(tempFoodFacts)
-        console.log(foodDisplay)
-        console.log(foodAmounts)
-        console.log(foodFacts)
+  const tools = [
+    {
+      name: 'Diff Checker',
+      path: '/diffchecker',
+      description: 'Compare and find differences between two texts',
+      icon: '⚡'
+    },
+    {
+      name: 'JSON Formatter',
+      path: '/json-formatter',
+      description: 'Format and validate JSON data',
+      icon: '📝'
+    },
+    {
+      name: 'Whitespace Converter',
+      path: '/whitespace-converter',
+      description: 'Convert whitespace to escape sequences',
+      icon: '🔍'
+    },
+    {
+      name: 'Show Whitespace',
+      path: '/show-whitespace',
+      description: 'Visualize whitespace with visible characters',
+      icon: '👁️'
     }
+  ];
 
-    const error = (validMenu) => {
-        let returnVal = <></>
-        if (validMenu) {
-            returnVal =
-                <div>
-                    Select your dining hall.
-                </div>
-        }
-        else{
-            returnVal =
-                <div>
-                    Bad dining hall, date, or meal. Try again.
-                </div>
-        }
-        return <>
-            {returnVal}
-        </>
-    }
-
-    return (
-        <div>
-            <Typography variant="h2" className="main-header">MDining Nutrition Calculator</Typography>
-            {/* {if(menu == {})} */}
-            <GetMenuForm onFoodHandler={FoodHandler} setValidMenu={setValidMenu} />
-            {console.log(foodDisplay)}
-            {
-                // (Object.keys(foodDisplay).length === 0) ? <AddFoodForm /> : null
-                (Object.keys(foodDisplay).length === 0)
-                    ? error(validMenu)
-                    : <AddFoodForm foodFacts={foodFacts} foodDisplay={foodDisplay} foodAmounts={foodAmounts} setFoodAmounts={setFoodAmounts} />
-            }
-            {/* <AddFoodForm /> */}
+  return (
+    <div className="landing-container">
+      <div className="landing-content">
+        <h1 className="landing-title">Developer Tools</h1>
+        <p className="landing-subtitle">A collection of useful utilities for developers</p>
+        
+        <div className="tools-grid">
+          {tools.map((tool) => (
+            <Link 
+              key={tool.path} 
+              to={tool.path} 
+              className="tool-card"
+            >
+              <div className="tool-icon">{tool.icon}</div>
+              <h2 className="tool-name">{tool.name}</h2>
+              <p className="tool-description">{tool.description}</p>
+            </Link>
+          ))}
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default Home;
+
